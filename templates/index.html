@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <head>
-  <title>OpenAI Quickstart</title>
+  <title>OpenAI URL Summary</title>
   <link
     rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
+    href="{{ url_for('static', filename='brain.png') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
 </head>
-
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
+  <img src="{{ url_for('static', filename='brain.png') }}" class="icon" />
+  <h3>Summarize a Blog</h3>
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+    <input type="text" name="url" placeholder="Enter a Blog" required />
+    <input type="submit" value="Generate Summary" />
   </form>
   {% if result %}
-  <div class="result">{{ result }}</div>
-  {% endif %}
+  <div class="result">
+    <ul>
+      {% for sentence in result.split(".") %}
+        {% if sentence %}
+          <li>{{ sentence.strip() }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %} 
 </body>

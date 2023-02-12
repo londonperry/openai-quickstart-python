@@ -64,3 +64,6 @@ input[type="submit"] {
   font-weight: bold;
   margin-top: 40px;
 }
+.result li::first-letter {
+  text-transform: capitalize;
+}
